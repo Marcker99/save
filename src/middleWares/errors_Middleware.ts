@@ -7,7 +7,6 @@ export const errorsMiddleware = (req:Request,res: Response, next:NextFunction)=>
         const errArr = errors.array()
         const resError = errArr.map((error) => ({
             message: error.msg,
-            field: error.param,
         }));
         //const resError = errArr[0].msg
         const errorsMessages = []

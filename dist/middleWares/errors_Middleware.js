@@ -8,7 +8,6 @@ const errorsMiddleware = (req, res, next) => {
         const errArr = errors.array();
         const resError = errArr.map((error) => ({
             message: error.msg,
-            field: error.param,
         }));
         //const resError = errArr[0].msg
         const errorsMessages = [];
