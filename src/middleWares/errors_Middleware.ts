@@ -12,7 +12,7 @@ export const errorsMiddleware = (req:Request,res: Response, next:NextFunction)=>
         //const resError = errArr[0].msg
         const errorsMessages = [...resError]
 
-        res.status(400).json({errorsMessages})
+        res.status(400).send({errorsMessages})
     } else {
         next()
     }

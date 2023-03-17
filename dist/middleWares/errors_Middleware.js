@@ -9,7 +9,7 @@ const errorsMiddleware = (req, res, next) => {
         const resError = errArr.map((error) => (Object.assign({}, error.msg)));
         //const resError = errArr[0].msg
         const errorsMessages = [...resError];
-        res.status(400).json({ errorsMessages });
+        res.status(400).send({ errorsMessages });
     }
     else {
         next();

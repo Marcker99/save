@@ -15,67 +15,67 @@ const BLOGrepo_1 = require("../DataLayer-bd-local/BLOGrepo");
 exports.checkTitle = (0, express_validator_1.body)('title')
     .notEmpty()
     .withMessage({
-    massage: "incorrect title ",
+    message: "incorrect title ",
     field: "title"
 })
     .bail()
     .isString()
     .withMessage({
-    massage: "incorrect title ",
+    message: "incorrect title ",
     field: "title"
 })
     .bail()
     .isLength({ min: 1, max: 30 })
     .withMessage({
-    massage: "incorrect title ",
+    message: "incorrect title ",
     field: "title"
 });
 exports.checkShortDescription = (0, express_validator_1.body)('shortDescription')
     .notEmpty()
     .withMessage({
-    massage: "incorrect short description",
+    message: "incorrect short description",
     field: "shortDescription"
 })
     .bail()
     .isString()
     .withMessage({
-    massage: "incorrect short description",
+    message: "incorrect short description",
     field: "shortDescription"
 })
     .bail()
     .isLength({ min: 1, max: 100 })
     .withMessage({
-    massage: "incorrect short description",
+    message: "incorrect short description",
     field: "shortDescription"
 });
 exports.checkContent = (0, express_validator_1.body)('content')
     .notEmpty()
     .withMessage({
-    massage: "incorrect content",
+    message: "incorrect content",
     field: "content"
 })
     .bail()
     .isString()
     .withMessage({
-    massage: "incorrect content",
+    message: "incorrect content",
     field: "content"
 })
     .bail()
     .isLength({ min: 1, max: 1000 })
     .withMessage({
-    massage: "incorrect content",
+    message: "incorrect content",
     field: "content"
 });
 exports.checkBlogId = (0, express_validator_1.body)('blogId')
     .notEmpty()
     .withMessage({
-    massage: "incorrect blog Id",
+    message: "incorrect blog Id",
     field: "blogId"
 })
     .bail()
     .isString()
     .withMessage({
-    massage: "incorrect blog Id",
+    message: "incorrect blog Id",
     field: "blogId"
 })
     .bail()
