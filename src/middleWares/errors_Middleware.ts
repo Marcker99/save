@@ -6,7 +6,7 @@ export const errorsMiddleware = (req:Request,res: Response, next:NextFunction)=>
 
     if(!errors.isEmpty()) {
         const errArr = errors.array()
-        const resError = errArr.map((error) => ({
+        const resError = errArr.map((error) => ({  //arr[{}]
             ...error.msg,
         }));
         //const resError = errArr[0].msg

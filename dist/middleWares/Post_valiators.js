@@ -18,11 +18,13 @@ exports.checkTitle = (0, express_validator_1.body)('title')
     massage: "incorrect title ",
     field: "title"
 })
+    .bail()
     .isString()
     .withMessage({
     massage: "incorrect title ",
     field: "title"
 })
+    .bail()
     .isLength({ min: 1, max: 30 })
     .withMessage({
     massage: "incorrect title ",
@@ -34,11 +36,13 @@ exports.checkShortDescription = (0, express_validator_1.body)('shortDescription'
     massage: "incorrect short description",
     field: "shortDescription"
 })
+    .bail()
     .isString()
     .withMessage({
     massage: "incorrect short description",
     field: "shortDescription"
 })
+    .bail()
     .isLength({ min: 1, max: 100 })
     .withMessage({
     massage: "incorrect short description",
@@ -50,11 +54,13 @@ exports.checkContent = (0, express_validator_1.body)('content')
     massage: "incorrect content",
     field: "content"
 })
+    .bail()
     .isString()
     .withMessage({
     massage: "incorrect content",
     field: "content"
 })
+    .bail()
     .isLength({ min: 1, max: 1000 })
     .withMessage({
     massage: "incorrect content",
@@ -66,18 +72,21 @@ exports.checkBlogId = (0, express_validator_1.body)('blogId')
     massage: "incorrect blog Id",
     field: "blogId"
 })
+    .bail()
     .isString()
     .withMessage({
     massage: "incorrect blog Id",
     field: "blogId"
 })
+    .bail()
     .custom((value, { req }) => __awaiter(void 0, void 0, void 0, function* () {
     const blogIdValue = BLOGrepo_1.blogDB.find((b) => b.id === value);
     if (!blogIdValue) {
         throw new Error();
     }
     return true;
-})).withMessage({
+}))
+    .withMessage({
     message: "Blog does not exist",
     field: "blogId"
 });
