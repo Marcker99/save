@@ -15,6 +15,7 @@ exports.checkName = (0, express_validator_1.body)('name')
     field: "name"
 })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 15 })
     .withMessage({
     message: "incorrect name",
@@ -33,6 +34,7 @@ exports.checkDescription = (0, express_validator_1.body)('description')
     field: "description"
 })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 500 })
     .withMessage({
     message: "incorrect description",
@@ -51,6 +53,7 @@ exports.checkUrl = (0, express_validator_1.body)('websiteUrl')
     field: "websiteUrl"
 })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 100 })
     .withMessage({
     message: "incorrect websiteUrl",

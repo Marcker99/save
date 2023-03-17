@@ -25,6 +25,7 @@ exports.checkTitle = (0, express_validator_1.body)('title')
     field: "title"
 })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 30 })
     .withMessage({
     message: "incorrect title ",
@@ -43,6 +44,7 @@ exports.checkShortDescription = (0, express_validator_1.body)('shortDescription'
     field: "shortDescription"
 })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 100 })
     .withMessage({
     message: "incorrect short description",
@@ -61,6 +63,7 @@ exports.checkContent = (0, express_validator_1.body)('content')
     field: "content"
 })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 1000 })
     .withMessage({
     message: "incorrect content",

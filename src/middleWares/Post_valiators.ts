@@ -13,6 +13,7 @@ export const checkTitle = body('title')
         field: "title"
     })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 30 })
     .withMessage({
         message: "incorrect title ",
@@ -31,6 +32,7 @@ export const checkShortDescription = body('shortDescription')
         field: "shortDescription"
     })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 100})
     .withMessage({
         message: "incorrect short description",
@@ -49,6 +51,7 @@ export const checkContent = body('content')
         field: "content"
     })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 1000 })
     .withMessage({
         message: "incorrect content",

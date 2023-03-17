@@ -13,6 +13,7 @@ export const checkName = body('name')
         field: "name"
     })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 15 })
     .withMessage({
         message: "incorrect name",
@@ -32,6 +33,7 @@ export const checkDescription = body('description')
         field: "description"
     })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 500 })
     .withMessage({
         message: "incorrect description",
@@ -50,6 +52,7 @@ export const checkUrl = body('websiteUrl')
         field: "websiteUrl"
     })
     .bail()
+    .trim()
     .isLength({ min: 1, max: 100 })
     .withMessage({
         message: "incorrect websiteUrl",
