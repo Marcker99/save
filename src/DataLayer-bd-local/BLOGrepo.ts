@@ -68,7 +68,11 @@ export const blogDataRepositories = {
              findId.websiteUrl = webUrl
              return true
          }
-     }
+     },
+    clearAll(){
+        return blogDB = []
+    }
+
     }
 
 

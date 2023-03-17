@@ -53,5 +53,8 @@ exports.blogDataRepositories = {
             findId.websiteUrl = webUrl;
             return true;
         }
+    },
+    clearAll() {
+        return exports.blogDB = [];
     }
 };

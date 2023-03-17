@@ -10,3 +10,7 @@ app.use(body_parser)
 app.use('/blogs',blogsRoutes)
 
 app.use('/posts',postRoutes)
+
+//test
+app.use('/testing',postRoutes)
+app.use('/testing',blogsRoutes)

@@ -71,5 +71,8 @@ exports.postDataRepositories = {
             findId.blogId = blogId;
             return true;
         }
+    },
+    clearAll() {
+        return exports.postDb = [];
     }
 };

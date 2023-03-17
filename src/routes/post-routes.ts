@@ -1,9 +1,10 @@
 //db-posts
 import {Request, Response, Router} from "express";
 import {authMiddleWare} from "../middleWares/auth.middleware";
-import {postDataRepositories} from "../DataLayer-bd-local/POSTrepo";
+import {postDataRepositories, postDb} from "../DataLayer-bd-local/POSTrepo";
 import {checkBlogId, checkContent, checkShortDescription, checkTitle} from "../middleWares/Post_valiators";
 import {errorsMiddleware} from "../middleWares/errors_Middleware";
+import {blogDB} from "../DataLayer-bd-local/BLOGrepo";
 
 
 export const postRoutes = Router({})
@@ -58,3 +59,10 @@ postRoutes.put('/:id',
 postRoutes.delete('/:id',authMiddleWare,(req:Request,res:Response) =>{
     postDataRepositories.removePostById(req.params.id)? res.send(204):res.send(404)
 })
+//
+
+postRoutes.delete('/all-data',(req:Request,res:Response) => {
+    postDataRepositories.clearAll()
+    res.sendStatus(204)
+})
+

@@ -58,3 +58,10 @@ blogsRoutes.put('/:id',
 blogsRoutes.delete('/:id',authMiddleWare,(req:Request,res:Response) =>{
     blogDataRepositories.removeBlogById(req.params.id.toString()) ? res.send(204):res.send(404)
 })
+//
+blogsRoutes.delete('/all-data',(req:Request,res:Response) => {
+     blogDataRepositories.clearAll()
+    res.sendStatus(204)
+})
+
+

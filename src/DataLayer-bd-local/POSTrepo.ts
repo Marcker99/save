@@ -82,14 +82,9 @@ export const postDataRepositories = {
              findId.blogId = blogId
              return true
          }
-     }
-
-
-
-
-
-
-
-
+     },
+    clearAll(){
+        return postDb = []
+    }
 
 }

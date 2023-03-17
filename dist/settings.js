@@ -12,3 +12,6 @@ exports.app = (0, express_1.default)();
 exports.app.use(gen_middlewares_1.body_parser);
 exports.app.use('/blogs', blogs_routes_1.blogsRoutes);
 exports.app.use('/posts', post_routes_1.postRoutes);
+//test
+exports.app.use('/testing', post_routes_1.postRoutes);
+exports.app.use('/testing', blogs_routes_1.blogsRoutes);
