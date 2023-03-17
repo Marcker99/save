@@ -10,8 +10,8 @@ const errorsMiddleware = (req, res, next) => {
             message: error.msg,
         }));
         //const resError = errArr[0].msg
-        const errorsMessages = [];
-        errorsMessages.push(resError);
+        const errorsMessages = [...resError];
+        //errorsMessages.push(resError)
         res.status(400).send({ errorsMessages });
     }
     else {
