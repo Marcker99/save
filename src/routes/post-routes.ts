@@ -61,8 +61,5 @@ postRoutes.delete('/:id',authMiddleWare,(req:Request,res:Response) =>{
 })
 //
 
-postRoutes.delete('/all-data',(req:Request,res:Response) => {
-    postDataRepositories.clearAll()
-    res.sendStatus(204)
-})
+
 

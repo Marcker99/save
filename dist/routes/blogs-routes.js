@@ -38,7 +38,3 @@ exports.blogsRoutes.delete('/:id', auth_middleware_1.authMiddleWare, (req, res) 
     BLOGrepo_1.blogDataRepositories.removeBlogById(req.params.id.toString()) ? res.send(204) : res.send(404);
 });
 //
-exports.blogsRoutes.delete('/all-data', (req, res) => {
-    BLOGrepo_1.blogDataRepositories.clearAll();
-    res.sendStatus(204);
-});

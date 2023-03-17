@@ -39,7 +39,3 @@ exports.postRoutes.delete('/:id', auth_middleware_1.authMiddleWare, (req, res) =
     POSTrepo_1.postDataRepositories.removePostById(req.params.id) ? res.send(204) : res.send(404);
 });
 //
-exports.postRoutes.delete('/all-data', (req, res) => {
-    POSTrepo_1.postDataRepositories.clearAll();
-    res.sendStatus(204);
-});
