@@ -4,12 +4,14 @@ exports.errorsMiddleware = void 0;
 const express_validator_1 = require("express-validator");
 const errorsMiddleware = (req, res, next) => {
     const errors = (0, express_validator_1.validationResult)(req);
+    const errorsMessages = [];
     if (!errors.isEmpty()) {
         const errArr = errors.array();
-        const resError = errArr.map((error) => (Object.assign({}, error.msg)));
-        //const resError = errArr[0].msg
-        const errorsMessages = [...resError];
-        //errorsMessages.push(resError)
+        for (let i = 0; i < errArr.length; i++) {
+            const error = errArr[i];
+            errorsMessages.push(Object.assign({}, error.msg));
+        }
+        ;
         res.status(400).json({ errorsMessages });
     }
     else {
