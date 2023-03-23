@@ -1,15 +1,16 @@
 
 import { Request, Response, Router} from "express";
-import {blogDataRepositories} from "../DataLayer-bd-local/BLOGrepo";
+import {blogDataRepositories} from "../repositoriesDataLayer/DB_BLOGrepo";
 import {errorsMiddleware} from "../middleWares/errors_Middleware";
 import {authMiddleWare} from "../middleWares/auth.middleware";
-import {checkDescription, checkName, checkUrl} from "../middleWares/Blog_validator";
+import {checkDescription, checkName, checkUrl} from "../middleWares/validators/Blog_validator";
 export const blogsRoutes = Router({})
 
 
 //routes
-blogsRoutes.get('/',(req:Request,res:Response)=>{
-    res.send(blogDataRepositories.readAllBlog())
+blogsRoutes.get('/',async (req: Request, res: Response) => {
+    const answer = await blogDataRepositories.readAllBlog()
+    res.send(answer)
 })
 //post
 blogsRoutes.post('/',
@@ -18,19 +19,19 @@ blogsRoutes.post('/',
     checkDescription,
     checkUrl,
     errorsMiddleware,
-    (req:Request,res:Response) =>{
-    const newBlog = blogDataRepositories.createNewBlog(req.body.name,req.body.description, req.body.websiteUrl)
+    async (req: Request, res: Response) => {
+        const newBlog = await blogDataRepositories.createNewBlog(req.body.name, req.body.description, req.body.websiteUrl)
         res.status(201).send(newBlog)
 
 
-
-})
+    })
 //get by id
-blogsRoutes.get('/:id',(req:Request,res:Response) =>{
-    let answer = blogDataRepositories.readBlogById(req.params.id.toString())
-    if(!answer){
+blogsRoutes.get('/:id',async (req: Request, res: Response) => {
+    let answer = await blogDataRepositories.readBlogById(req.params.id.toString())
+    if (!answer) {
         res.sendStatus(404)
-    } res.send(answer)
+    }
+    res.send(answer)
 })
 
 
@@ -42,12 +43,14 @@ blogsRoutes.put('/:id',
     checkDescription,
     checkUrl,
     errorsMiddleware,
-    (req:Request,res:Response) =>{
-      if(blogDataRepositories.updateBlog(req.params.id,req.body.name,req.body.description,req.body.websiteUrl)) {
-          res.send(204)
-      } else {
-          res.send(404)
-      }
+    async (req: Request, res: Response) => {
+        const answer = await blogDataRepositories.updateBlog(req.params.id, req.body.name,
+            req.body.description, req.body.websiteUrl)
+        if (answer) {
+            res.send(204)
+        } else {
+            res.send(404)
+        }
     })
 
 
@@ -55,8 +58,9 @@ blogsRoutes.put('/:id',
 
 
 //delete by id
-blogsRoutes.delete('/:id',authMiddleWare,(req:Request,res:Response) =>{
-    blogDataRepositories.removeBlogById(req.params.id.toString()) ? res.send(204):res.send(404)
+blogsRoutes.delete('/:id',authMiddleWare, async (req: Request, res: Response) => {
+    const answer = await blogDataRepositories.removeBlogById(req.params.id.toString()) //toString?
+    answer ? res.send(204) : res.send(404)
 })
 //
 

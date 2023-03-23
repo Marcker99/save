@@ -8,6 +8,7 @@ interface postObj{
     content:string;
     blogId:string;
     blogName:string;
+    createdAt:string;
 
 }
 export let postDb: postObj[] = [
@@ -17,7 +18,8 @@ export let postDb: postObj[] = [
         shortDescription: "id 1 ,name: some name",
         content: "short video",
         blogId: "1",
-        blogName: "some name"
+        blogName: "some name",
+        createdAt: "2023-03-21T18:59:25.622Z"
     },
     {
         id: "985",
@@ -25,7 +27,8 @@ export let postDb: postObj[] = [
         shortDescription: "id 2 ,name: another name",
         content: "short video",
         blogId: "2",
-        blogName: "another name"
+        blogName: "another name",
+        createdAt: "2023-03-22T19:59:25.622Z"
     }
 ]
 
@@ -65,7 +68,8 @@ export const postDataRepositories = {
             shortDescription: shortDescription,
             content: content,
             blogId: blogId,
-            blogName: blogName
+            blogName: blogName,
+            createdAt: new Date().toISOString()
         }
             postDb.push(newPost)
             return newPost

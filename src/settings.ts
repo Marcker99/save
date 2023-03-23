@@ -1,10 +1,10 @@
 import express from "express";
-import {body_parser} from "./middleWares/gen.middlewares";
 import {blogsRoutes} from "./routes/blogs-routes";
 import {postRoutes} from "./routes/post-routes";
 import {clearRout} from "./routes/clearDB";
+import bodyParser from "body-parser";
 export const app = express()
-
+export const body_parser = bodyParser({})
 
 app.use(body_parser)
 

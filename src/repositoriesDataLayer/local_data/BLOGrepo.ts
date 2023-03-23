@@ -4,21 +4,27 @@ export interface blogObj{
     name: string;
     description:string;
     websiteUrl:string
-}
+    createdAt:string
+    isMembership:boolean
 
+}
+//new Date().toISOString()
 export let blogDB: blogObj[] = [
     {
         id: "1",
         name:"some name",
         description: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqmfmtfmfhmhfmfmhmfmfmmtmftytbisjhisejhiojsihojsiohjr",
-        websiteUrl: "https://qEb-W8yZ5QznRLeZ0DkBM-phFGh7HxbsshrsMEa7KZlh155.CZxjs6gficymZT2SqacgsgfsgYhXePRDqD5SECSMLu"
-
+        websiteUrl: "https://qEb-W8yZ5QznRLeZ0DkBM-phFGh7HxbsshrsMEa7KZlh155.CZxjs6gficymZT2SqacgsgfsgYhXePRDqD5SECSMLu",
+        createdAt: '2023-03-22T18:59:25.622Z',
+        isMembership: false
     },
     {
         id: "2",
         name:"another name",
         description: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqmfmtfmfhmhfmfmhmfmfmmtmftytbisjhisejhiojsihojsiohjr",
-        websiteUrl: "https://qEb-W8yV5QznRLeZ0DkBM-phFGh7HxbsshrsMEa67Zlh155.CZxjs6gficymZT2SqacghXePRDqD5SECSMLu"
+        websiteUrl: "https://qEb-W8yV5QznRLeZ0DkBM-phFGh7HxbsshrsMEa67Zlh155.CZxjs6gficymZT2SqacghXePRDqD5SECSMLu",
+        createdAt: '2023-03-22T19:59:25.622Z',
+        isMembership: false
 
     }
 ]
@@ -51,7 +57,9 @@ export const blogDataRepositories = {
             id: Math.floor((Math.random() * 1000)).toString(),
             name: name,
             description: description,
-            websiteUrl: webUrl
+            websiteUrl: webUrl,
+            createdAt: new Date().toISOString(),
+            isMembership: false
         }
             blogDB.push(newBlog)
             return newBlog

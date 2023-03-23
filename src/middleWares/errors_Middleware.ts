@@ -6,10 +6,10 @@ export const errorsMiddleware = (req:Request,res: Response, next:NextFunction)=>
 
     if(!errors.isEmpty()) {
         const errArr = errors.array()
-        const resError = errArr.map((error) => ({  //arr[{}]
+        const resError = errArr.map((error) => ({                                                   //arr[{}]
             ...error.msg,
         }));
-        //const resError = errArr[0].msg
+                                                                                       //const resError = errArr[0].msg
         const errorsMessages = [...resError]
 
         res.status(400).send({errorsMessages})

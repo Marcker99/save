@@ -1,5 +1,6 @@
 import {body} from "express-validator";
-import {blogDB} from "../DataLayer-bd-local/BLOGrepo";
+import {_blogDB} from "../../repositoriesDataLayer/DB_BLOGrepo";
+import {blogsCollection} from "../../repositoriesDataLayer/db";
 export const checkTitle = body('title')
     .notEmpty()
     .withMessage({
@@ -74,7 +75,7 @@ export const checkBlogId = body('blogId')
     })
     .bail()
     .custom(async (value, { req }) => {
-        const blogIdValue = blogDB.find((b) => b.id === value);
+        const blogIdValue = await blogsCollection.findOne({id:value})
         if (!blogIdValue) {
             throw new Error();
         }
