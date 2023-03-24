@@ -1,5 +1,4 @@
 import {body} from "express-validator";
-import {_blogDB} from "../../repositoriesDataLayer/DB_BLOGrepo";
 import {blogsCollection} from "../../repositoriesDataLayer/db";
 export const checkTitle = body('title')
     .notEmpty()
